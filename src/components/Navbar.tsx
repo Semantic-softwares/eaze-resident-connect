@@ -30,7 +30,7 @@ const Navbar = () => {
           </div>
           
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" size="sm">Login</Button>
+            <Button variant="outline" size="sm" className="border-primary-600 text-primary-600 hover:bg-primary-50">Login</Button>
             <Button size="sm">Request Demo</Button>
           </div>
           
@@ -61,7 +61,7 @@ const Navbar = () => {
             <a href="#pricing" className="block py-2 text-gray-700 hover:text-primary-600 font-medium" onClick={toggleMenu}>Pricing</a>
             <a href="#contact" className="block py-2 text-gray-700 hover:text-primary-600 font-medium" onClick={toggleMenu}>Contact</a>
             <div className="pt-2 space-y-2">
-              <Button variant="outline" className="w-full">Login</Button>
+              <Button variant="outline" className="w-full border-primary-600 text-primary-600 hover:bg-primary-50">Login</Button>
               <Button className="w-full">Request Demo</Button>
             </div>
           </div>

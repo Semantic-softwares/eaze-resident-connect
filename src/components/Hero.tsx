@@ -18,7 +18,7 @@ const Hero = () => {
               <Button size="lg" className="text-base flex items-center gap-2">
                 Request a Demo <ArrowRight size={16} />
               </Button>
-              <Button variant="outline" size="lg" className="text-base">
+              <Button variant="outline" size="lg" className="text-base border-primary-600 text-primary-600 hover:bg-primary-50">
                 View Features
               </Button>
             </div>
