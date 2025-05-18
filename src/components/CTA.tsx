@@ -13,7 +13,7 @@ const CTA = () => {
           <Button size="lg" variant="secondary" className="bg-white text-primary-600 hover:bg-gray-100 text-base">
             Schedule a Demo
           </Button>
-          <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 text-base">
+          <Button size="lg" className="border-white text-white hover:bg-white/10 border text-base">
             Contact Sales
           </Button>
         </div>

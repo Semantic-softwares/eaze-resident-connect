@@ -1,4 +1,5 @@
 
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Check } from 'lucide-react';
 import { 
@@ -9,14 +10,22 @@ import {
   CardTitle,
   CardDescription
 } from '@/components/ui/card';
+import { Switch } from '@/components/ui/switch';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const pricingPlans = [
   {
     name: "Standard Plan",
     description: "For smaller estates",
     housesLimit: "Up to 20 Houses",
-    price: "$10",
-    period: "per month",
+    price: {
+      monthly: "$10",
+      yearly: "$100"
+    },
+    period: {
+      monthly: "per month",
+      yearly: "per year"
+    },
     buttonText: "Get Started",
     buttonAction: "default",
     highlighted: false,
@@ -49,8 +58,14 @@ const pricingPlans = [
     name: "Custom Plan",
     description: "For medium-sized estates",
     housesLimit: "20-100 Houses",
-    price: "Request Quote",
-    period: "",
+    price: {
+      monthly: "Request Quote",
+      yearly: "Request Quote"
+    },
+    period: {
+      monthly: "",
+      yearly: ""
+    },
     buttonText: "Contact Us",
     buttonAction: "default",
     highlighted: true,
@@ -83,8 +98,14 @@ const pricingPlans = [
     name: "Consultation",
     description: "For larger estates and complexes",
     housesLimit: "100+ Houses",
-    price: "Request Quote",
-    period: "",
+    price: {
+      monthly: "Request Quote",
+      yearly: "Request Quote"
+    },
+    period: {
+      monthly: "",
+      yearly: ""
+    },
     buttonText: "Contact Us",
     buttonAction: "outline",
     highlighted: false,
@@ -116,14 +137,32 @@ const pricingPlans = [
 ];
 
 const Pricing = () => {
+  const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
+
   return (
     <section id="pricing" className="section bg-gray-50">
       <div className="container mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-gray-600 mb-8">
             Choose the plan that fits your estate's needs. All plans include our core features.
           </p>
+          
+          <div className="flex justify-center items-center gap-4 mb-8">
+            <Tabs 
+              defaultValue="monthly"
+              value={billingCycle} 
+              onValueChange={(value) => setBillingCycle(value as 'monthly' | 'yearly')}
+              className="w-fit mx-auto"
+            >
+              <TabsList className="grid w-[240px] grid-cols-2">
+                <TabsTrigger value="monthly">Monthly</TabsTrigger>
+                <TabsTrigger value="yearly">
+                  Yearly <span className="ml-1 text-xs bg-primary-100 text-primary-600 px-1.5 py-0.5 rounded-full">Save 17%</span>
+                </TabsTrigger>
+              </TabsList>
+            </Tabs>
+          </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -150,13 +189,13 @@ const Pricing = () => {
               
               <CardContent className="pt-4 pb-0 flex-grow">
                 <div className="mb-5">
-                  {plan.price !== "Request Quote" ? (
+                  {plan.price[billingCycle] !== "Request Quote" ? (
                     <div>
-                      <span className="text-3xl font-bold">{plan.price}</span>
-                      <span className="text-gray-500 ml-1">{plan.period}</span>
+                      <span className="text-3xl font-bold">{plan.price[billingCycle]}</span>
+                      <span className="text-gray-500 ml-1">{plan.period[billingCycle]}</span>
                     </div>
                   ) : (
-                    <span className="text-xl font-semibold">{plan.price}</span>
+                    <span className="text-xl font-semibold">{plan.price[billingCycle]}</span>
                   )}
                 </div>
                 

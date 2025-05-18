@@ -1,5 +1,6 @@
 
 import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -32,6 +33,7 @@ const Footer = () => {
             <ul className="space-y-2">
               <li><a href="#features" className="hover:text-white transition-colors">Features</a></li>
               <li><a href="#benefits" className="hover:text-white transition-colors">Benefits</a></li>
+              <li><a href="#how-it-works" className="hover:text-white transition-colors">How It Works</a></li>
               <li><a href="#pricing" className="hover:text-white transition-colors">Pricing</a></li>
               <li><a href="#testimonials" className="hover:text-white transition-colors">Testimonials</a></li>
               <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
@@ -41,21 +43,17 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold text-white mb-4">Resources</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Help Center</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Case Studies</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Documentation</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Webinars</a></li>
+              <li><Link to="/case-studies" className="hover:text-white transition-colors">Case Studies</Link></li>
             </ul>
           </div>
           
           <div>
             <h4 className="text-lg font-semibold text-white mb-4">Legal</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Security</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Compliance</a></li>
+              <li><Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+              <li><Link to="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link></li>
+              <li><Link to="/security" className="hover:text-white transition-colors">Security</Link></li>
+              <li><Link to="/compliance" className="hover:text-white transition-colors">Compliance</Link></li>
             </ul>
           </div>
         </div>
