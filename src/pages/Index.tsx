@@ -10,6 +10,7 @@ import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import HowItWorks from "../components/HowItWorks";
 import FAQ from "../components/FAQ";
+import FadeInSection from "../components/FadeInSection";
 
 const Index = () => {
   return (
@@ -17,14 +18,30 @@ const Index = () => {
       <Navbar />
       <main>
         <Hero />
-        <Features />
-        <Benefits />
-        <HowItWorks />
-        <Testimonials />
-        <Pricing />
-        <FAQ />
-        <CTA />
-        <Contact />
+        <FadeInSection>
+          <Features />
+        </FadeInSection>
+        <FadeInSection>
+          <Benefits />
+        </FadeInSection>
+        <FadeInSection>
+          <HowItWorks />
+        </FadeInSection>
+        <FadeInSection>
+          <Testimonials />
+        </FadeInSection>
+        <FadeInSection>
+          <Pricing />
+        </FadeInSection>
+        <FadeInSection>
+          <FAQ />
+        </FadeInSection>
+        <FadeInSection>
+          <CTA />
+        </FadeInSection>
+        <FadeInSection>
+          <Contact />
+        </FadeInSection>
       </main>
       <Footer />
     </div>
