@@ -30,6 +30,7 @@ const Navbar = () => {
             <a href="#benefits" className="text-gray-700 hover:text-primary-600 font-medium">Benefits</a>
             <a href="#testimonials" className="text-gray-700 hover:text-primary-600 font-medium">Testimonials</a>
             <a href="#pricing" className="text-gray-700 hover:text-primary-600 font-medium">Pricing</a>
+            <a href="#faq" className="text-gray-700 hover:text-primary-600 font-medium">FAQ</a>
             <a href="#contact" className="text-gray-700 hover:text-primary-600 font-medium">Contact</a>
           </div>
           
@@ -62,6 +63,7 @@ const Navbar = () => {
             <a href="#benefits" className="block py-2 text-gray-700 hover:text-primary-600 font-medium" onClick={toggleMenu}>Benefits</a>
             <a href="#testimonials" className="block py-2 text-gray-700 hover:text-primary-600 font-medium" onClick={toggleMenu}>Testimonials</a>
             <a href="#pricing" className="block py-2 text-gray-700 hover:text-primary-600 font-medium" onClick={toggleMenu}>Pricing</a>
+            <a href="#faq" className="block py-2 text-gray-700 hover:text-primary-600 font-medium" onClick={toggleMenu}>FAQ</a>
             <a href="#contact" className="block py-2 text-gray-700 hover:text-primary-600 font-medium" onClick={toggleMenu}>Contact</a>
             <div className="pt-2">
               <Button className="w-full">Request Demo</Button>

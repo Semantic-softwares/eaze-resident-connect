@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
 
 const Contact = () => {
   return (
@@ -62,8 +62,7 @@ const Contact = () => {
                   <Mail className="h-6 w-6 text-primary-600 mr-4 mt-1" />
                   <div>
                     <h4 className="font-medium mb-1">Email Us</h4>
-                    <p className="text-gray-600">info@estateeaze.com</p>
-                    <p className="text-gray-600">support@estateeaze.com</p>
+                    <p className="text-gray-600">business@estateeaze.com</p>
                   </div>
                 </div>
                 
@@ -71,21 +70,9 @@ const Contact = () => {
                   <Phone className="h-6 w-6 text-primary-600 mr-4 mt-1" />
                   <div>
                     <h4 className="font-medium mb-1">Call Us</h4>
-                    <p className="text-gray-600">+234 123 456 7890</p>
-                    <p className="text-gray-600">+234 987 654 3210</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <MapPin className="h-6 w-6 text-primary-600 mr-4 mt-1" />
-                  <div>
-                    <h4 className="font-medium mb-1">Visit Us</h4>
-                    <p className="text-gray-600">
-                      Lagos Office: 123 Victoria Island, Lagos, Nigeria
-                    </p>
-                    <p className="text-gray-600">
-                      Abuja Office: 456 Central Business District, Abuja, Nigeria
-                    </p>
+                    <p className="text-gray-600">+263 771 234567</p>
+                    <p className="text-gray-600">+263 77 344 6815</p>
+                    <p className="text-gray-600">+263 77 469 3729</p>
                   </div>
                 </div>
               </div>

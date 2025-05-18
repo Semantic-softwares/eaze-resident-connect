@@ -1,5 +1,5 @@
 
-import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -44,6 +44,7 @@ const Footer = () => {
             <h4 className="text-lg font-semibold text-white mb-4">Resources</h4>
             <ul className="space-y-2">
               <li><Link to="/case-studies" className="hover:text-white transition-colors">Case Studies</Link></li>
+              <li><a href="#faq" className="hover:text-white transition-colors">FAQ</a></li>
             </ul>
           </div>
           
