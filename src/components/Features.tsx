@@ -1,36 +1,61 @@
 
-import { Shield, Users, Bell, CreditCard, BarChart, Calendar } from 'lucide-react';
+import { 
+  Key, 
+  DollarSign, 
+  User, 
+  Calendar, 
+  Dog, 
+  Wrench, 
+  Bell, 
+  FileText, 
+  CreditCard 
+} from 'lucide-react';
 
 const features = [
   {
-    icon: <BarChart className="h-8 w-8 text-primary-600" />,
-    title: 'Estate Accounts Transparency',
-    description: 'Access real-time financial reports and transactions, ensuring complete transparency in estate fund management.'
+    icon: <Key className="h-8 w-8 text-primary-600" />,
+    title: 'Access Control',
+    description: 'Control vehicle access and reduce congestion at the gate. Our system integrates with facial recognition technology, allowing seamless, secure entry for residents.'
   },
   {
-    icon: <Shield className="h-8 w-8 text-primary-600" />,
-    title: 'Visitor Tracking',
-    description: 'Enhance security with digital visitor passes and real-time tracking for all estate guests.'
+    icon: <DollarSign className="h-8 w-8 text-primary-600" />,
+    title: 'Automated Levy Billing',
+    description: 'No more chasing payments. Generate and send bills automatically, with reminders for overdue accounts.'
   },
   {
-    icon: <CreditCard className="h-8 w-8 text-primary-600" />,
-    title: 'Levy Automation',
-    description: 'Automate levy collection, payment reminders, and receipt generation for hassle-free estate finances.'
-  },
-  {
-    icon: <Bell className="h-8 w-8 text-primary-600" />,
-    title: 'Real-time Notifications',
-    description: 'Stay informed with instant alerts about estate activities, maintenance, and important announcements.'
+    icon: <User className="h-8 w-8 text-primary-600" />,
+    title: 'Visitor Management',
+    description: 'Track and manage all visitors in real-time — from entry to exit.'
   },
   {
     icon: <Calendar className="h-8 w-8 text-primary-600" />,
-    title: 'Facility Booking',
-    description: 'Easily schedule and manage estate facilities like halls, gyms, and recreational spaces.'
+    title: 'Common Area Bookings',
+    description: 'Easily book shared spaces like parks and clubhouses. Avoid double bookings and ensure fair use.'
   },
   {
-    icon: <Users className="h-8 w-8 text-primary-600" />,
-    title: 'Resident Directory',
-    description: 'Access a secure directory of verified residents with contact information for community building.'
+    icon: <Dog className="h-8 w-8 text-primary-600" />,
+    title: 'Pet Management',
+    description: 'Keep pet records up-to-date and ensure all residents follow pet policies.'
+  },
+  {
+    icon: <Wrench className="h-8 w-8 text-primary-600" />,
+    title: 'Contractor Management',
+    description: 'Access a trusted list of recommended contractors for estate work and maintenance.'
+  },
+  {
+    icon: <Bell className="h-8 w-8 text-primary-600" />,
+    title: 'Real-Time Notifications',
+    description: 'Be instantly updated when visitors or contractors enter the estate.'
+  },
+  {
+    icon: <FileText className="h-8 w-8 text-primary-600" />,
+    title: 'Document Repository',
+    description: 'Access estate rules, policies, and notices — anytime, anywhere.'
+  },
+  {
+    icon: <CreditCard className="h-8 w-8 text-primary-600" />,
+    title: 'In-App Insurance Purchases',
+    description: 'Residents can now purchase car, home, or travel insurance directly through the app — convenient, secure, and right at your fingertips.'
   }
 ];
 
@@ -49,7 +74,7 @@ const Features = () => {
           {features.map((feature, index) => (
             <div 
               key={index} 
-              className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 transition-all hover:shadow-md hover:border-primary-200"
+              className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 transition-all hover:shadow-md hover:border-primary-200 hover:scale-[1.02]"
             >
               <div className="mb-5 inline-block p-3 bg-primary-50 rounded-lg">
                 {feature.icon}
