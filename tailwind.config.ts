@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -26,11 +27,31 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					50: '#f0f7ff',
+					100: '#e0eefe',
+					200: '#b9ddfb',
+					300: '#7cc2f7',
+					400: '#36a3f0',
+					500: '#1a87dd',
+					600: '#1a56db',
+					700: '#1e4ab0',
+					800: '#1e3f8f',
+					900: '#1e3773',
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))'
+					foreground: 'hsl(var(--secondary-foreground))',
+					50: '#f0fdfd',
+					100: '#ccfcf7',
+					200: '#99f6ee',
+					300: '#5eeae0',
+					400: '#2dcfc6',
+					500: '#0d9488',
+					600: '#0c7a70',
+					700: '#106158',
+					800: '#114d47',
+					900: '#12403b',
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
@@ -84,11 +105,31 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': {
+						opacity: '0'
+					},
+					'100%': {
+						opacity: '1'
+					}
+				},
+				'fade-up': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(20px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.5s ease-out',
+				'fade-up': 'fade-up 0.7s ease-out'
 			}
 		}
 	},
