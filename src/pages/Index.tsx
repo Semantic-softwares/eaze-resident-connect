@@ -9,6 +9,7 @@ import CTA from "../components/CTA";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import HowItWorks from "../components/HowItWorks";
+import FAQ from "../components/FAQ";
 
 const Index = () => {
   return (
@@ -21,6 +22,7 @@ const Index = () => {
         <HowItWorks />
         <Testimonials />
         <Pricing />
+        <FAQ />
         <CTA />
         <Contact />
       </main>
