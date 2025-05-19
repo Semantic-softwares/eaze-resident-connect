@@ -72,7 +72,7 @@ const Contact = () => {
 
     // Create the mailto link and open it
     const mailtoLink = `mailto:business@estateeaze.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
+    console.log(mailtoLink)
     // Using window.location.href to open the email client (most reliable method)
     window.location.href = mailtoLink;
   };
