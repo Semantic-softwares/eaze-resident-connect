@@ -4,6 +4,13 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone } from 'lucide-react';
 import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const Contact = () => {
   return (
@@ -35,7 +42,7 @@ const Contact = () => {
                 </div>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
                   <label htmlFor="estateUnits" className="block text-sm font-medium text-gray-700 mb-1">
                     Number of Units In Estate
@@ -46,21 +53,28 @@ const Contact = () => {
                   <label htmlFor="country" className="block text-sm font-medium text-gray-700 mb-1">
                     Country
                   </label>
-                  <Input id="country" placeholder="Your country" />
-                </div>
-                <div>
-                  <label htmlFor="estateName" className="block text-sm font-medium text-gray-700 mb-1">
-                    Estate Name
-                  </label>
-                  <Input id="estateName" placeholder="Name of your estate" />
+                  <Select>
+                    <SelectTrigger id="country">
+                      <SelectValue placeholder="Select your country" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="zimbabwe">Zimbabwe</SelectItem>
+                      <SelectItem value="south-africa">South Africa</SelectItem>
+                      <SelectItem value="botswana">Botswana</SelectItem>
+                      <SelectItem value="zambia">Zambia</SelectItem>
+                      <SelectItem value="mozambique">Mozambique</SelectItem>
+                      <SelectItem value="namibia">Namibia</SelectItem>
+                      <SelectItem value="other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
               
               <div className="mb-6">
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
-                  Subject
+                <label htmlFor="estateName" className="block text-sm font-medium text-gray-700 mb-1">
+                  Estate Name
                 </label>
-                <Input id="subject" placeholder="How can we help you?" />
+                <Input id="estateName" placeholder="Name of your estate" />
               </div>
               
               <div className="mb-6">
