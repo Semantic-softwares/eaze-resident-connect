@@ -10,6 +10,13 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-200">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,7 +42,7 @@ const Navbar = () => {
           </div>
           
           <div className="hidden md:flex items-center">
-            <Button size="sm">Request Demo</Button>
+            <Button size="sm" onClick={() => scrollToSection('contact')}>Request Demo</Button>
           </div>
           
           {/* Mobile menu button */}
@@ -66,7 +73,10 @@ const Navbar = () => {
             <a href="#faq" className="block py-2 text-gray-700 hover:text-primary-600 font-medium" onClick={toggleMenu}>FAQ</a>
             <a href="#contact" className="block py-2 text-gray-700 hover:text-primary-600 font-medium" onClick={toggleMenu}>Contact</a>
             <div className="pt-2">
-              <Button className="w-full">Request Demo</Button>
+              <Button className="w-full" onClick={() => {
+                scrollToSection('contact');
+                toggleMenu();
+              }}>Request Demo</Button>
             </div>
           </div>
         </div>

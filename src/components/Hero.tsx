@@ -4,6 +4,13 @@ import { ArrowRight } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 
 const Hero = () => {
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -16,10 +23,19 @@ const Hero = () => {
               EstateEaze is an all-in-one estate management system built to empower estate residents and administrators with transparency, automation, and real-time communication.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="text-base flex items-center gap-2">
+              <Button 
+                size="lg" 
+                className="text-base flex items-center gap-2"
+                onClick={() => scrollToSection('contact')}
+              >
                 Request a Demo <ArrowRight size={16} />
               </Button>
-              <Button variant="outline" size="lg" className="text-base border-primary-600 text-primary-600 hover:bg-primary-50">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="text-base border-primary-600 text-primary-600 hover:bg-primary-50"
+                onClick={() => scrollToSection('features')}
+              >
                 View Features
               </Button>
             </div>
