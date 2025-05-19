@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { Card } from '@/components/ui/card';
@@ -81,7 +80,12 @@ const Hero = () => {
                       <h3 className="font-bold text-lg">EstateEaze Mobile App</h3>
                       <p className="text-sm text-gray-600">Everything at your fingertips</p>
                     </div>
-                    <Button variant="ghost" size="sm" className="text-primary-600 hover:text-primary-700">
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="text-primary-600 hover:text-primary-700" 
+                      onClick={() => scrollToSection('features')}
+                    >
                       Learn more
                     </Button>
                   </div>

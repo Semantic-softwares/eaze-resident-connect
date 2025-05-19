@@ -1,4 +1,5 @@
 
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -13,6 +14,67 @@ import {
 } from "@/components/ui/select";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    estateUnits: '',
+    country: '',
+    estateName: '',
+    message: '',
+    modules: {
+      billingInsurance: false,
+      visitorManagement: false,
+      contractor: false,
+    }
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
+  const handleSelectChange = (value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      country: value
+    }));
+  };
+
+  const handleCheckboxChange = (id: string) => {
+    setFormData(prev => ({
+      ...prev,
+      modules: {
+        ...prev.modules,
+        [id]: !prev.modules[id as keyof typeof prev.modules]
+      }
+    }));
+  };
+
+  const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    
+    // Create the email subject and body
+    const subject = `EstateEaze Inquiry from ${formData.estateName || formData.name}`;
+    
+    let body = `Name: ${formData.name}\n`;
+    body += `Email: ${formData.email}\n`;
+    body += `Estate Name: ${formData.estateName}\n`;
+    body += `Estate Units: ${formData.estateUnits}\n`;
+    body += `Country: ${formData.country}\n\n`;
+    body += `Message: ${formData.message}\n\n`;
+    body += "Modules Required:\n";
+    body += `- Billing Insurance: ${formData.modules.billingInsurance ? 'Yes' : 'No'}\n`;
+    body += `- Visitor Management: ${formData.modules.visitorManagement ? 'Yes' : 'No'}\n`;
+    body += `- Contractor: ${formData.modules.contractor ? 'Yes' : 'No'}\n`;
+
+    // Create the mailto link and open it
+    const mailtoLink = `mailto:business@estateeaze.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+  };
+
   return (
     <section id="contact" className="section bg-white">
       <div className="container mx-auto">
@@ -26,19 +88,43 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="bg-white rounded-xl shadow-md p-8">
             <h3 className="text-2xl font-semibold mb-6">Contact Us</h3>
-            <form>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <form onSubmit={handleSubmit}>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                     Full Name
                   </label>
-                  <Input id="name" placeholder="Your name" />
+                  <Input 
+                    id="name" 
+                    placeholder="Your name" 
+                    value={formData.name} 
+                    onChange={handleInputChange} 
+                    required 
+                  />
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                     Email Address
                   </label>
-                  <Input id="email" type="email" placeholder="your@email.com" />
+                  <Input 
+                    id="email" 
+                    type="email" 
+                    placeholder="your@email.com" 
+                    value={formData.email} 
+                    onChange={handleInputChange} 
+                    required 
+                  />
+                </div>
+                <div>
+                  <label htmlFor="estateName" className="block text-sm font-medium text-gray-700 mb-1">
+                    Estate Name
+                  </label>
+                  <Input 
+                    id="estateName" 
+                    placeholder="Name of your estate" 
+                    value={formData.estateName} 
+                    onChange={handleInputChange} 
+                  />
                 </div>
               </div>
               
@@ -47,13 +133,19 @@ const Contact = () => {
                   <label htmlFor="estateUnits" className="block text-sm font-medium text-gray-700 mb-1">
                     Number of Units In Estate
                   </label>
-                  <Input id="estateUnits" type="number" placeholder="e.g., 100" />
+                  <Input 
+                    id="estateUnits" 
+                    type="number" 
+                    placeholder="e.g., 100" 
+                    value={formData.estateUnits} 
+                    onChange={handleInputChange} 
+                  />
                 </div>
                 <div>
                   <label htmlFor="country" className="block text-sm font-medium text-gray-700 mb-1">
                     Country
                   </label>
-                  <Select>
+                  <Select value={formData.country} onValueChange={handleSelectChange}>
                     <SelectTrigger id="country">
                       <SelectValue placeholder="Select your country" />
                     </SelectTrigger>
@@ -71,24 +163,27 @@ const Contact = () => {
               </div>
               
               <div className="mb-6">
-                <label htmlFor="estateName" className="block text-sm font-medium text-gray-700 mb-1">
-                  Estate Name
-                </label>
-                <Input id="estateName" placeholder="Name of your estate" />
-              </div>
-              
-              <div className="mb-6">
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                   Message
                 </label>
-                <Textarea id="message" placeholder="Enter your message here" rows={4} />
+                <Textarea 
+                  id="message" 
+                  placeholder="Enter your message here" 
+                  rows={4} 
+                  value={formData.message} 
+                  onChange={handleInputChange} 
+                />
               </div>
               
               <div className="mb-6">
                 <h4 className="text-sm font-medium text-gray-700 mb-2">Modules required:</h4>
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
-                    <Checkbox id="billingInsurance" />
+                    <Checkbox 
+                      id="billingInsurance" 
+                      checked={formData.modules.billingInsurance}
+                      onCheckedChange={() => handleCheckboxChange('billingInsurance')}
+                    />
                     <label
                       htmlFor="billingInsurance"
                       className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -97,7 +192,11 @@ const Contact = () => {
                     </label>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <Checkbox id="visitorManagement" />
+                    <Checkbox 
+                      id="visitorManagement"
+                      checked={formData.modules.visitorManagement}
+                      onCheckedChange={() => handleCheckboxChange('visitorManagement')}
+                    />
                     <label
                       htmlFor="visitorManagement"
                       className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -106,7 +205,11 @@ const Contact = () => {
                     </label>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <Checkbox id="contractor" />
+                    <Checkbox 
+                      id="contractor"
+                      checked={formData.modules.contractor}
+                      onCheckedChange={() => handleCheckboxChange('contractor')}
+                    />
                     <label
                       htmlFor="contractor"
                       className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
