@@ -1,11 +1,22 @@
 
 import { Button } from '@/components/ui/button';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const CTA = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHomePage = location.pathname === '/';
+
   const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+    if (isHomePage) {
+      // If we're on the home page, just scroll to the section
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // If we're on another page, navigate to home with the section hash
+      navigate(`/#${sectionId}`);
     }
   };
 

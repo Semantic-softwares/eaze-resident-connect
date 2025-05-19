@@ -2,18 +2,33 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHomePage = location.pathname === '/';
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+    if (isHomePage) {
+      // If we're on the home page, just scroll to the section
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // If we're on another page, navigate to home with the section hash
+      navigate(`/#${sectionId}`);
+    }
+    
+    // Close the mobile menu if it's open
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
     }
   };
 
@@ -33,12 +48,12 @@ const Navbar = () => {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#features" className="text-gray-700 hover:text-primary-600 font-medium">Features</a>
-            <a href="#benefits" className="text-gray-700 hover:text-primary-600 font-medium">Benefits</a>
-            <a href="#testimonials" className="text-gray-700 hover:text-primary-600 font-medium">Testimonials</a>
-            <a href="#pricing" className="text-gray-700 hover:text-primary-600 font-medium">Pricing</a>
-            <a href="#faq" className="text-gray-700 hover:text-primary-600 font-medium">FAQ</a>
-            <a href="#contact" className="text-gray-700 hover:text-primary-600 font-medium">Contact</a>
+            <button onClick={() => scrollToSection('features')} className="text-gray-700 hover:text-primary-600 font-medium">Features</button>
+            <button onClick={() => scrollToSection('benefits')} className="text-gray-700 hover:text-primary-600 font-medium">Benefits</button>
+            <button onClick={() => scrollToSection('testimonials')} className="text-gray-700 hover:text-primary-600 font-medium">Testimonials</button>
+            <button onClick={() => scrollToSection('pricing')} className="text-gray-700 hover:text-primary-600 font-medium">Pricing</button>
+            <button onClick={() => scrollToSection('faq')} className="text-gray-700 hover:text-primary-600 font-medium">FAQ</button>
+            <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-primary-600 font-medium">Contact</button>
           </div>
           
           <div className="hidden md:flex items-center">
@@ -66,17 +81,14 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-200">
           <div className="container mx-auto px-4 py-4 space-y-3">
-            <a href="#features" className="block py-2 text-gray-700 hover:text-primary-600 font-medium" onClick={toggleMenu}>Features</a>
-            <a href="#benefits" className="block py-2 text-gray-700 hover:text-primary-600 font-medium" onClick={toggleMenu}>Benefits</a>
-            <a href="#testimonials" className="block py-2 text-gray-700 hover:text-primary-600 font-medium" onClick={toggleMenu}>Testimonials</a>
-            <a href="#pricing" className="block py-2 text-gray-700 hover:text-primary-600 font-medium" onClick={toggleMenu}>Pricing</a>
-            <a href="#faq" className="block py-2 text-gray-700 hover:text-primary-600 font-medium" onClick={toggleMenu}>FAQ</a>
-            <a href="#contact" className="block py-2 text-gray-700 hover:text-primary-600 font-medium" onClick={toggleMenu}>Contact</a>
+            <button onClick={() => scrollToSection('features')} className="block w-full text-left py-2 text-gray-700 hover:text-primary-600 font-medium">Features</button>
+            <button onClick={() => scrollToSection('benefits')} className="block w-full text-left py-2 text-gray-700 hover:text-primary-600 font-medium">Benefits</button>
+            <button onClick={() => scrollToSection('testimonials')} className="block w-full text-left py-2 text-gray-700 hover:text-primary-600 font-medium">Testimonials</button>
+            <button onClick={() => scrollToSection('pricing')} className="block w-full text-left py-2 text-gray-700 hover:text-primary-600 font-medium">Pricing</button>
+            <button onClick={() => scrollToSection('faq')} className="block w-full text-left py-2 text-gray-700 hover:text-primary-600 font-medium">FAQ</button>
+            <button onClick={() => scrollToSection('contact')} className="block w-full text-left py-2 text-gray-700 hover:text-primary-600 font-medium">Contact</button>
             <div className="pt-2">
-              <Button className="w-full" onClick={() => {
-                scrollToSection('contact');
-                toggleMenu();
-              }}>Request Demo</Button>
+              <Button className="w-full" onClick={() => scrollToSection('contact')}>Request Demo</Button>
             </div>
           </div>
         </div>
