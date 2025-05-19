@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone } from 'lucide-react';
+import { Checkbox } from "@/components/ui/checkbox";
 
 const Contact = () => {
   return (
@@ -34,6 +35,27 @@ const Contact = () => {
                 </div>
               </div>
               
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <div>
+                  <label htmlFor="estateUnits" className="block text-sm font-medium text-gray-700 mb-1">
+                    Number of Units In Estate
+                  </label>
+                  <Input id="estateUnits" type="number" placeholder="e.g., 100" />
+                </div>
+                <div>
+                  <label htmlFor="country" className="block text-sm font-medium text-gray-700 mb-1">
+                    Country
+                  </label>
+                  <Input id="country" placeholder="Your country" />
+                </div>
+                <div>
+                  <label htmlFor="estateName" className="block text-sm font-medium text-gray-700 mb-1">
+                    Estate Name
+                  </label>
+                  <Input id="estateName" placeholder="Name of your estate" />
+                </div>
+              </div>
+              
               <div className="mb-6">
                 <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
                   Subject
@@ -46,6 +68,39 @@ const Contact = () => {
                   Message
                 </label>
                 <Textarea id="message" placeholder="Enter your message here" rows={4} />
+              </div>
+              
+              <div className="mb-6">
+                <h4 className="text-sm font-medium text-gray-700 mb-2">Modules required:</h4>
+                <div className="space-y-2">
+                  <div className="flex items-center space-x-2">
+                    <Checkbox id="billingInsurance" />
+                    <label
+                      htmlFor="billingInsurance"
+                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
+                      Billing Insurance
+                    </label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Checkbox id="visitorManagement" />
+                    <label
+                      htmlFor="visitorManagement"
+                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
+                      Visitor Management
+                    </label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Checkbox id="contractor" />
+                    <label
+                      htmlFor="contractor"
+                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
+                      Contractor
+                    </label>
+                  </div>
+                </div>
               </div>
               
               <Button type="submit" className="w-full">
